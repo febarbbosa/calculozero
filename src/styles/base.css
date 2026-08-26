@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Cálculo Zero — base.css
+   Tokens, reset e tipografia.
+
+   DIREÇÃO DE DESIGN
+   O produto vive no mundo do papel quadriculado e do plano cartesiano. Então
+   o substrato da interface é uma malha de coordenadas de baixíssimo contraste,
+   e a trilha de assuntos é desenhada como pontos plotados sobre ela. O assunto
+   da plataforma virou a moldura dela.
+
+   Cor: viridiano profundo sobre papel técnico levemente esverdeado. Edtech
+   costuma cair em azul ou roxo; o verde escuro puxa para calma e precisão de
+   laboratório — e já é a cor da "verdade" nos gráficos, onde a aproximação é
+   âmbar e o valor exato é viridiano. A cor carrega significado, não decora.
+
+   Tipo: Bricolage Grotesque tem irregularidade proposital nas formas. Numa
+   plataforma de matemática isso corta a esterilidade sem cair na cara de livro
+   escolar antigo — que a especificação pediu para evitar. Usada só em título.
+   Todo NÚMERO da interface é monoespaçado: é regra, não enfeite. Dado tem que
+   parecer medido.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  color-scheme: light;
+
+  /* superfícies */
+  --paper:     #F4F6F3;
+  --surface:   #FFFFFF;
+  --surface-2: #EAEEE9;
+  --line:      #DDE3DC;
+  --line-2:    #BFC8BE;
+
+  /* texto */
+  --ink:   #101512;
+  --ink-2: #58635A;
+  --ink-3: #8B9790;
+
+  /* marca e estados */
+  --accent:      #16A34A;
+  --accent-deep: #10803B;
+  --accent-dark: #0B5F2B;   /* usado na sombra sólida dos botões */
+  --accent-soft: #DCF7E6;
+  --on-accent:   #FFFFFF;
+  --signal:      #E08700;
+  --signal-deep: #B36A00;
+  --signal-soft: #FFF3DC;
+  --alert:       #E0364F;
+  --alert-deep:  #B32740;
+  --alert-soft:  #FFE6EA;
+  --ok:          #16A34A;
+  --ok-soft:     #DCF7E6;
+
+  /* cores por disciplina — cada área tem identidade própria */
+  --d1:  #E0722C;   /* Matemática Básica */
+  --d2:  #7C4DEE;   /* Álgebra */
+  --d3:  #0EA5C4;   /* Geometria */
+  --d4:  #16A34A;   /* Funções */
+  --d5:  #E0398A;   /* Trigonometria */
+  --d6:  #8A6BE0;   /* Pré-Cálculo */
+  --d7:  #2563EB;   /* Cálculo I */
+  --d8:  #E08700;   /* Probabilidade */
+  --d9:  #0D9488;   /* Estatística */
+  --d10: #64748B;   /* Computação */
+  --d11: #C2410C;   /* Ciência de Dados */
+  --d12: #9333EA;   /* Álgebra Linear */
+
+  /* gráficos */
+  --viz-grid: #DDE3DC;
+  --viz-axis: #A9B5AB;
+
+  /* malha de coordenadas do fundo */
+  --mesh: rgba(16, 21, 18, 0.05);
+  --mesh-step: 28px;
+
+  /* forma — cantos generosos e sombra sólida, não difusa.
+     A sombra dura é o que dá a sensação de peça física clicável. */
+  --r-s: 10px;
+  --r:   16px;
+  --r-l: 24px;
+  --r-pill: 999px;
+  --drop: 4px;                                  /* profundidade dos botões */
+  --lift:   0 1px 2px rgba(16,21,18,.04), 0 12px 32px -18px rgba(16,21,18,.22);
+  --lift-2: 0 2px 6px rgba(16,21,18,.06), 0 30px 60px -24px rgba(16,21,18,.30);
+
+  /* tipografia */
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --body:    'Schibsted Grotesk', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  /* layout */
+  --wrap: 880px;
+  --gut: 20px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper:     #0D1210;
+  --surface:   #141B18;
+  --surface-2: #1B2420;
+  --line:      #253029;
+  --line-2:    #3A4941;
+
+  --ink:   #E8EEE9;
+  --ink-2: #9DAAA2;
+  --ink-3: #6F7D76;
+
+  --accent:      #34D77F;
+  --accent-deep: #5FE79C;
+  --accent-dark: #16733F;
+  --accent-soft: #12301F;
+  --on-accent:   #06170D;
+  --signal:      #F2B457;
+  --signal-deep: #C98F35;
+  --signal-soft: #2E2214;
+  --alert:       #FF7D93;
+  --alert-deep:  #D1566C;
+  --alert-soft:  #301619;
+  --ok:          #34D77F;
+  --ok-soft:     #12301F;
+
+  --d1:  #FF9556;  --d2:  #A88BFF;  --d3:  #45CDE6;
+  --d4:  #34D77F;  --d5:  #FF74B4;  --d6:  #B49BFF;
+  --d7:  #6C9BFF;  --d8:  #F2B457;  --d9:  #34D0C0;
+  --d10: #9AA9BC;  --d11: #FF8F5E;  --d12: #C084FC;
+
+  --viz-grid: #253029;
+  --viz-axis: #46554C;
+  --mesh: rgba(232, 238, 233, 0.055);
+
+  --lift:   0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.7);
+  --lift-2: 0 2px 6px rgba(0,0,0,.5), 0 30px 60px -24px rgba(0,0,0,.8);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+/* A malha de coordenadas — camada fixa e discreta, desbotando para baixo,
+   em vez de textura repetida em cada bloco. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--mesh) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mesh) 1px, transparent 1px);
+  background-size: var(--mesh-step) var(--mesh-step);
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 30vh, transparent 68vh);
+  mask-image: linear-gradient(180deg, #000 0, #000 30vh, transparent 68vh);
+}
+
+#app { position: relative; z-index: 1; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+h1 { font-size: clamp(36px, 8.5vw, 60px); font-weight: 800; }
+h2 { font-size: clamp(24px, 5vw, 34px); }
+h3 { font-size: 19px; letter-spacing: -0.02em; }
+h4 { font-family: var(--body); font-size: 14px; font-weight: 700; margin: 0; }
+
+p { margin: 0 0 14px; }
+p:last-child { margin-bottom: 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font-family: inherit; font-size: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--gut);
+}
+
+/* ---- utilitários ---- */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+.muted { color: var(--ink-2); }
+.dim   { color: var(--ink-3); }
+.center { text-align: center; }
+.stack { display: flex; flex-direction: column; }
+.row   { display: flex; align-items: center; }
+.gap-6 { gap: 6px; } .gap-10 { gap: 10px; } .gap-14 { gap: 14px; }
+.gap-20 { gap: 20px; } .gap-28 { gap: 28px; }
+.grow  { flex: 1; min-width: 0; }
+.wrapf { flex-wrap: wrap; }
+.mt-8 { margin-top: 8px; } .mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; } .mt-32 { margin-top: 32px; }
+.hide { display: none !important; }
+
+/* Todo número da interface é monoespaçado. */
+.num {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.math {
+  font-family: var(--mono);
+  font-weight: 500;
+  background: var(--surface-2);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: .9em;
+  white-space: nowrap;
+}
+.math-block {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 17px;
+  text-align: center;
+  padding: 16px 12px;
+  background: var(--surface-2);
+  border-radius: var(--r-s);
+  margin: 14px 0;
+  overflow-x: auto;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}
