@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://febarbbosa.github.io/calculozero/"><b>🌐 Abrir a plataforma</b></a>
+  <a href="https://felipesilvas2.github.io/calculozero/"><b>🌐 Abrir a plataforma</b></a>
   ·
   <a href="#-o-que-tem-dentro">O que tem dentro</a>
   ·
