@@ -1,2 +1,0 @@
-D=.normalize('NFD').replace(/[̀-ͯ]/g, '');
-E=/[−–—‐‑]/g
