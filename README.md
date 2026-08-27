@@ -34,6 +34,10 @@ cd calculozero
 
 Agora é só dar **dois cliques no `index.html`**. Pronto.
 
+**No celular:** rode `python3 build.py`. Ele gera `dist/calculozero.html`, um
+arquivo único com tudo dentro — CSS, JavaScript, conteúdo. Manda por WhatsApp
+e abre.
+
 ---
 
 ## 💡 A ideia

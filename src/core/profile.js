@@ -284,7 +284,7 @@ window.CZ = window.CZ || {};
 
   /**
    * A recomendação do momento. É o que o painel e o Zero usam para decidir
-   * o que dizer sem que a tela precise raciocínar sozinha.
+   * o que dizer sem que a tela precise raciocinar sozinha.
    */
   function sugestao() {
     const r = risco();
